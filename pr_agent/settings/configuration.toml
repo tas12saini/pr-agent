@@ -1,5 +1,5 @@
 [config]
-model="gpt-35-turbo"
+model="gpt-3.5-turbo"
 fallback_models=["gpt-3.5-turbo-16k"]
 git_provider="github"
 publish_output=true
