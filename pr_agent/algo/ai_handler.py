@@ -38,9 +38,9 @@ class AiHandler:
                     self.azure = True
                     litellm.azure_key = get_settings().openai.key
             if get_settings().get("OPENAI.API_VERSION", None):
-                litellm.api_version = get_settings().openai.api_version
+                litellm.api_version = "2023-03-15-preview"
             if get_settings().get("OPENAI.API_BASE", None):
-                litellm.api_base = get_settings().openai.api_base
+                litellm.api_base = "https://cdp-cost-bot.openai.azure.com/"
             if get_settings().get("ANTHROPIC.KEY", None):
                 litellm.anthropic_key = get_settings().anthropic.key
             if get_settings().get("COHERE.KEY", None):
@@ -93,10 +93,10 @@ class AiHandler:
                     f"{(' from deployment ' + deployment_id) if deployment_id else ''}"
                 )
             if self.azure:
-                model = 'azure/' + model
+                model = 'azure/' + "gpt-3.5-turbo"
             response = await acompletion(
                 model=model,
-                deployment_id=deployment_id,
+                deployment_id="chatgpt",
                 messages=[
                     {"role": "system", "content": system},
                     {"role": "user", "content": user}
