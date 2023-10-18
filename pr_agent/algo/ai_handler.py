@@ -33,14 +33,27 @@ class AiHandler:
             self.azure = False
             if get_settings().get("OPENAI.ORG", None):
                 litellm.organization = get_settings().openai.org
-            if get_settings().get("OPENAI.API_TYPE", None):
-                if get_settings().openai.api_type == "azure":
-                    self.azure = True
-                    litellm.azure_key = get_settings().openai.key
+
+            # Getting OPEN_API_TYPE from here
+            if os.environ.get('OPENAI_API_TYPE') == "azure":
+                self.azure = True
+                litellm.azure_key = get_settings().openai.key
+
+            # if get_settings().get("OPENAI.API_TYPE", None):
+            #     if get_settings().openai.api_type == "azure":
+            #         self.azure = True
+            #         litellm.azure_key = get_settings().openai.key
+
+            # Setting here api_version
             if get_settings().get("OPENAI.API_VERSION", None):
-                litellm.api_version = "2023-03-15-preview"
+                # litellm.api_version = "2023-03-15-preview"
+                litellm.api_version = os.environ.get('OPENAI_API_VERSION')
+            
+            # Setting here api_base
             if get_settings().get("OPENAI.API_BASE", None):
-                litellm.api_base = "https://cdp-cost-bot.openai.azure.com/"
+                # litellm.api_base = "https://cdp-cost-bot.openai.azure.com/"
+                litellm.api_base = os.environ.get('OPENAI_API_BASE')
+                
             if get_settings().get("ANTHROPIC.KEY", None):
                 litellm.anthropic_key = get_settings().anthropic.key
             if get_settings().get("COHERE.KEY", None):
