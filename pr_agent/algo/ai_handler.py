@@ -37,8 +37,8 @@ class AiHandler:
 
             self.azure = True
             litellm.azure_key = get_settings().openai.key
-            litellm.api_version = get_settings.get("OPENAI.API_VERSION")
-            litellm.api_base = get_settings.get("OPENAI.API_BASE")
+            litellm.api_version = get_settings().openai.api_version
+            litellm.api_base = get_settings().openai.api_base
 
             # if get_settings().get("OPENAI.API_TYPE", None):
             #     if get_settings().openai.api_type == "azure":
