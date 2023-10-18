@@ -17,6 +17,17 @@ async def run_action():
     OPENAI_KEY = os.environ.get('OPENAI_KEY') or os.environ.get('OPENAI.KEY')
     OPENAI_ORG = os.environ.get('OPENAI_ORG') or os.environ.get('OPENAI.ORG')
     GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
+
+    # From here
+    OPENAI_API_TYPE = os.environ.get('OPENAI_API_TYPE')
+    OPENAI_API_VERSION = os.environ.get('OPENAI_API_VERSION')
+    OPENAI_API_BASE = os.environ.get('OPENAI_API_BASE')
+    print(OPENAI_API_TYPE + " " + OPENAI_API_VERSION + " " + OPENAI_API_BASE)
+    get_settings().set("OPENAI.API_TYPE", OPENAI_API_TYPE)
+    get_settings().set("OPENAI.API_VERSION", OPENAI_API_VERSION)
+    get_settings().set("OPENAI.API_BASE", OPENAI_API_BASE)
+    # Till here
+
     get_settings().set("CONFIG.PUBLISH_OUTPUT_PROGRESS", False)
 
 
