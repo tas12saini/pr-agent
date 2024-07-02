@@ -110,7 +110,7 @@ class AiHandler:
                 model = 'azure/' + "gpt-3.5-turbo"
             response = await acompletion(
                 model=model,
-                deployment_id="chatgpt",
+                deployment_id="githubPrAgentTestModel",
                 messages=[
                     {"role": "system", "content": system},
                     {"role": "user", "content": user}
