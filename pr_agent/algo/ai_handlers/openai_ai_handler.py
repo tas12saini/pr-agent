@@ -46,7 +46,7 @@ class OpenAIHandler(BaseAiHandler):
             messages = [{"role": "system", "content": system}, {"role": "user", "content": user}]
             chat_completion = await openai.ChatCompletion.acreate(
                 model=model,
-                deployment_id="githubPrAgentTestModel",
+                deployment_id=deployment_id,
                 messages=messages,
                 temperature=temperature,
             )

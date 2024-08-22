@@ -154,7 +154,7 @@ class LiteLLMAIHandler(BaseAiHandler):
         """
         Returns the deployment ID for the OpenAI API.
         """
-        return get_settings().get("OPENAI.DEPLOYMENT_ID", "githubPrAgentTestModel")
+        return get_settings().get("OPENAI.DEPLOYMENT_ID", None)
 
     @retry(
         retry=retry_if_exception_type((openai.APIError, openai.APIConnectionError, openai.APITimeoutError)), # No retry on RateLimitError
