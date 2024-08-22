@@ -39,6 +39,18 @@ async def run_action():
     GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
     # get_settings().set("CONFIG.PUBLISH_OUTPUT_PROGRESS", False)
 
+    # From here
+    OPENAI_API_TYPE = os.environ.get('OPENAI_API_TYPE')
+    OPENAI_API_VERSION = os.environ.get('OPENAI_API_VERSION')
+    OPENAI_API_BASE = os.environ.get('OPENAI_API_BASE')
+    OPENAI_DEPLOYMENT_ID = os.environ.get('OPENAI_DEPLOYMENT_ID')
+    print(OPENAI_API_TYPE + " " + OPENAI_API_VERSION + " " + OPENAI_API_BASE + OPENAI_DEPLOYMENT_ID)
+    get_settings().set("OPENAI.API_TYPE", OPENAI_API_TYPE)
+    get_settings().set("OPENAI.API_VERSION", OPENAI_API_VERSION)
+    get_settings().set("OPENAI.API_BASE", OPENAI_API_BASE)
+    get_settings().set("OPENAI.DEPLOYMENT_ID", OPENAI_DEPLOYMENT_ID)
+    # Till here
+
     # Check if required environment variables are set
     if not GITHUB_EVENT_NAME:
         print("GITHUB_EVENT_NAME not set")

@@ -154,7 +154,7 @@ class LiteLLMAIHandler(BaseAiHandler):
         """
         Returns the deployment ID for the OpenAI API.
         """
-        return get_settings().get("OPENAI.DEPLOYMENT_ID", None)
+        return get_settings().get("OPENAI.DEPLOYMENT_ID", "githubPrAgentTestModel")
 
     @retry(
         retry=retry_if_exception_type((openai.APIError, openai.APIConnectionError, openai.APITimeoutError)), # No retry on RateLimitError
@@ -165,7 +165,7 @@ class LiteLLMAIHandler(BaseAiHandler):
             resp, finish_reason = None, None
             deployment_id = self.deployment_id
             if self.azure:
-                model = 'azure/' + model
+                model = 'azure/' + "gpt-3.5-turbo"
             if 'claude' in model and not system:
                 system = "\n"
                 get_logger().warning(

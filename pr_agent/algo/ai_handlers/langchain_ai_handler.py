@@ -42,7 +42,7 @@ class LangChainOpenAIHandler(BaseAiHandler):
             messages = [SystemMessage(content=system), HumanMessage(content=user)]
 
             # get a chat completion from the formatted messages
-            resp = self.chat(messages, model=model, temperature=temperature)
+            resp = self.chat(messages, model="gpt-3.5-turbo", temperature=temperature)
             finish_reason = "completed"
             return resp.content, finish_reason
 
