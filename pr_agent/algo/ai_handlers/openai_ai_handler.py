@@ -44,7 +44,6 @@ class OpenAIHandler(BaseAiHandler):
             get_logger().info("System: ", system)
             get_logger().info("User: ", user)
             messages = [{"role": "system", "content": system}, {"role": "user", "content": user}]
-            model = "gpt-3.5-turbo"
             chat_completion = await openai.ChatCompletion.acreate(
                 model=model,
                 deployment_id="githubPrAgentTestModel",

@@ -165,7 +165,7 @@ class LiteLLMAIHandler(BaseAiHandler):
             resp, finish_reason = None, None
             deployment_id = self.deployment_id
             if self.azure:
-                model = 'azure/' + "gpt-3.5-turbo"
+                model = 'azure/' + model
             if 'claude' in model and not system:
                 system = "\n"
                 get_logger().warning(
